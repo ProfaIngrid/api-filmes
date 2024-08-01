@@ -3,18 +3,17 @@ const express = require('express');
 const router = express.Router();
 
 router.get("/", (req, res) => {
-    const query = 'Select * from filmes';
+    const query = 'Select * from usuarios';
     dbConecta.query(query, (err, results) => {
         if(err) throw err;
-        // res.send(`Conexão deu certo!`);
         res.json(results);
     });
 });
 
-router.get("/:id", (req, res) => {
-    const id = req.params.id;
-    const query = 'select * from filmes where id = ?';
-    dbConecta.query(query, [id], (err, results) => {
+router.get("/:username", (req, res) => {
+    const username = req.params.username;
+    const query = 'select * from usuarios where username = ?';
+    dbConecta.query(query, [username], (err, results) => {
         if(err) throw err;
         res.json(results);
     });
@@ -22,6 +21,7 @@ router.get("/:id", (req, res) => {
 
 
 module.exports = router;
+
 
 
 
