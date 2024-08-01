@@ -10,8 +10,9 @@ const conecta = mysql.createConnection({
 });
 
 conecta.connect((err)=> {
-    err ? console.log(`Erro ao conectar ao banco: ${err}`) : "";
-    console.log(`Banco ${name_db} conectado com sucesso!`);
+    err 
+    ? console.log(`Erro ao conectar ao banco: ${err}`) 
+    : console.log(`Banco ${name_db} conectado com sucesso!`);
 });
 
 module.exports = conecta;

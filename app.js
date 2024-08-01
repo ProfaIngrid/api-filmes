@@ -1,17 +1,12 @@
 const express = require('express'); //importa o express
 const app = express(); //inicializa o express
-const dbConecta = require('./models/dbConnection');
 const port = 3000;
+const filmesRouter = require("./routes/filmesRouter");
+
+app.use('/', filmesRouter);
 
 app.get("/", (req, res) => {
     res.send("Deu bom :) !");
-});
-
-app.get("/testedb", (req, res) => {
-    const query = 'Select * from filmes';
-    dbConecta.query(query, (err, results) => {
-        res.send(`Conexão deu certo!`);
-    });
 });
 
 
@@ -19,4 +14,7 @@ app.get("/testedb", (req, res) => {
 app.listen(port, () => {
     console.log('Servidor rodando na porta: ', port);
 });
+
+
+
 
