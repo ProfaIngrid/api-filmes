@@ -1,7 +1,10 @@
 const express = require('express'); //importa o express
+const bodyParser = require('body-parser');
 const app = express(); //inicializa o express
 const port = 3000;
 const filmesRouter = require("./routes/filmesRouter");
+
+app.use(bodyParser.json());
 
 app.use('/', filmesRouter);
 
