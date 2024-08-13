@@ -18,4 +18,18 @@ router.get('/', (req, res) => {
     });
 });
 
+router.delete('/', (req, res) => {
+    const {id} = req.body;
+    const query = 'delete from avaliacoes where id = ?';
+
+    dbConecta.query(query, [id], (err) => {
+        if (err) throw err;
+        res.json ({
+            mensagem : "Avaliação deletada com sucesso", 
+            body: req.body 
+        });
+    });
+});
+
 module.exports = router;
+
